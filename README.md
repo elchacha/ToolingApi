@@ -1,6 +1,6 @@
 # ToolingApi
 
-to test the apex part : 
+to test the apex classes, execute the following code (create a CustomLabel, update a CustomLabel , delete the customLabel created) : 
 
 System.debug(ToolingApiUtil.execSoql('select Id,Value,Name from ExternalString',false));
 
