@@ -20,7 +20,7 @@ public with sharing class ToolingApiUtil {
         HttpRequest req = new HttpRequest();
         req.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         req.setHeader('Content-Type', 'application/json');
-        req.setEndpoint(URL.getSalesforceBaseUrl().toExternalForm()+'/services/data/v47.0/tooling/sobjects/'+type+endOperation);
+        req.setEndpoint(URL.getOrgDomainUrl().toExternalForm()+'/services/data/v47.0/tooling/sobjects/'+type+endOperation);
         req.setBody(JSON.serialize(param));
         req.setMethod(operation);
 
@@ -38,7 +38,7 @@ public with sharing class ToolingApiUtil {
         HttpRequest req = new HttpRequest();
         req.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         req.setHeader('Content-Type', 'application/json');
-        req.setEndpoint(URL.getSalesforceBaseUrl().toExternalForm()+'/services/data/v47.0/tooling/query/?q='+EncodingUtil.urlEncode(query, 'UTF-8'));
+        req.setEndpoint(URL.getOrgDomainUrl().toExternalForm()+'/services/data/v47.0/tooling/query/?q='+EncodingUtil.urlEncode(query, 'UTF-8'));
         req.setMethod('GET');
         HttpResponse res = (new Http()).send(req);
 		Map<String, Object> fieldMap = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
